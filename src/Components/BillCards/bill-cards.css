@@ -1,0 +1,71 @@
+.card {
+    height: 180px;
+    border: 1px solid #fff;
+    background-color: #fff;
+    width: 30%;
+    box-shadow: 0 0 8px #d0d0d0;
+    margin-bottom: 24px;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.card-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.half-cards {
+    margin-top: 18px;
+    position: relative;
+    text-align: center;
+}
+.half-cards:first-of-type {
+    margin-top: 8px;
+}
+
+.half-cards input {
+    width: 80%;
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+
+.half-cards input + label {
+    position: absolute;
+    color: #777;
+    left: 0;
+    top: 8px;
+    font-size: 13px;
+    transition: ease-in 0.3s all;
+}
+
+.half-cards input:focus + label {
+    top: -8px;
+    font-size: 10px;
+}
+
+.half-cards button{
+    background: none;
+    border: 1px solid #333;
+    padding: 4px 10px;
+    margin-left: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.half-cards > div {
+    font-size: 12px;
+    margin-bottom: 8px;
+    color: #009688;
+}
+
+.label {
+    font-size: 20px;
+    color: #009688;
+    font-weight: 500;
+}
+
+.values {
+    font-size: 48px;
+    padding: 24px 0;
+}

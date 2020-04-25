@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { AppContext } from '../../context'
 import './bill-list.css'
@@ -6,16 +6,21 @@ import './bill-list.css'
 
 const BillList = () => {
   const {
-    getBillsForPayment
+    getBillsForPayment,
+    flagToShowBills,
+    threshold
   } = useContext(AppContext)
   const billers = useSelector(state => state)
   const [bills, setBills] = useState(billers)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    console.log(bills)
-    setBills(getBillsForPayment(bills, 42000))
-  }, [billers])
+      if (flagToShowBills) {
+        setBills(getBillsForPayment(bills, threshold))
+      } else {
+        setBills(getBillsForPayment(bills, 0))
+      }
+  }, [billers, flagToShowBills, threshold])
 
   let billList = "No bills available"
 
@@ -33,7 +38,7 @@ const BillList = () => {
         <>
           {
               bills.map((bill, index) => (
-                  <div className="bill-item" key={`${index}_elem`}>
+                  <div className={`bill-item ${bill.highlight ? 'highlight-item' : ''}`} key={`${index}_elem`}>
                       <div className="bill-details">
                         <div>
                             {bill.description}

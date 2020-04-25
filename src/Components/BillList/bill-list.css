@@ -2,7 +2,12 @@
     border-bottom: 1px solid #ccc;
     position: relative;
     display: flex;
-    padding: 12px;
+    padding: 12px 24px;
+}
+
+.highlight-item {
+    border-bottom: 1px solid #607D8B;
+    background: #f1fffe;
 }
 
 .bill-item:last-of-type {
@@ -11,7 +16,6 @@
 
 .bills {
     background-color: #fff;
-    padding: 0 24px;
     box-shadow: 0 0 4px #bbbbbb45;
     border-radius: 8px;
     margin-bottom: 24px;
@@ -19,7 +23,7 @@
 
 .bill-item span {
     position: absolute;
-    right: 0;
+    right: 12px;
     color: #ccc;
     font-size: 14px;
     font-weight: 600;

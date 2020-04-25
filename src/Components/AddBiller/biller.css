@@ -28,7 +28,7 @@
     margin-top: 26px;
 }
 
-.add-biller-name:focus + label {
+.add-biller-name:focus + label, .add-biller-name.label-top + label {
     top: 12px;
     font-size: 12px;
     color: #009688;
@@ -89,7 +89,7 @@
 }
 
 
-.add-biller-amount:focus + label {
+.add-biller-amount:focus + label, .add-biller-amount.label-top + label {
     top: -8px;
     font-size: 12px;
     color: #009688;

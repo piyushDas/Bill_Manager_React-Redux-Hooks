@@ -10,15 +10,16 @@ const AddBiller = () => {
   // } = useContext(AppContext)
 //   const bills = useSelector(state => state)
   const dispatch = useDispatch()
-  const [name, setName] = useState('')
+  const [description, setDescription] = useState('')
   const [category, setCategory] = useState('')
   const [amount, setAmount] = useState('')
   const [formError, setFormError] = useState(false)
   const addFieldToPayload = (ev, type) => {
       let val = ev.currentTarget.value
-      if (type === 'name') {
-        setName(val)
+      if (type === 'description') {
+        setDescription(val)
       } else if (type === 'category') {
+        val = ev.target.value
         setCategory(val)
       } else if (type === 'amount') {
         setAmount(val)
@@ -28,15 +29,15 @@ const AddBiller = () => {
   const resetForm = () => {
       setAmount('')
       setCategory('')
-      setName('')
+      setDescription('')
   }
 
   const addBill = () => {
-      if (name && category && amount && typeof parseInt(amount) === 'number') {
+      if (description && category && amount && typeof parseInt(amount) === 'number') {
         dispatch({
             type: "ADD_BILL",
             payload: {
-                name,
+                description,
                 category,
                 amount: parseInt(amount)
             }
@@ -53,19 +54,24 @@ const AddBiller = () => {
             New Expense
         </div>
         <div className="pos-r">
-            <input type="text" className={name ? 'add-biller-name' : 'add-biller-name label-top'} id="add-biller-name" value={name} onChange={e => addFieldToPayload(e, 'name')} />
+            <input type="text" className={description ? 'add-biller-name label-top' : 'add-biller-name'} id="add-biller-name" value={description} onChange={e => addFieldToPayload(e, 'description')} />
             <label className="biller-label" htmlFor="add-biller-name">Describe your expense </label>
         </div>
         
         <div className="biller-row-second">
             <div>
                 <select id="add-biller-category" className="add-biller-category" value={category} onChange={e => addFieldToPayload(e, 'category')}>
-                    <option>Select Category</option>
+                    <option value="">Select Category</option>
+                    <option value="Shopping">Shopping</option>
+                    <option value="Education">Education</option>
+                    <option value="Personal Care">Personal Care</option>
+                    <option value="Travel">Travel</option>
+                    <option value="Utility">Utility</option>
                 </select>
             </div>
 
             <div>
-                <input type="text" className={amount ? 'add-biller-amount' : 'add-biller-amount label-top'} id="add-biller-amount" value={amount} onChange={e => addFieldToPayload(e, 'amount')} />
+                <input type="text" className={amount ? 'add-biller-amount label-top' : 'add-biller-amount'} id="add-biller-amount" value={amount} onChange={e => addFieldToPayload(e, 'amount')} />
                 <label htmlFor="add-biller-amount">Amount: </label>
             </div>
 
