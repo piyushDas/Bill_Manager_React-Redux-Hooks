@@ -6,9 +6,9 @@ const createBiller = ({description, category, amount}) => ({
     amount,
   });
 
-const removeBiller = (bills, description) => {
+const removeBiller = (bills, id) => {
     return bills.filter(bill => {
-        return bill.description !== description
+        return bill.id !== id
     })
 }
 
@@ -64,7 +64,7 @@ const reducer = (state = [...initialState], action) => {
         case "ADD_BILL":
             return [...state, createBiller(payload)];
         case "REMOVE_BILL":
-            return removeBiller(state, payload.description)
+            return removeBiller(state, payload.id)
         default:
             return state;
     }

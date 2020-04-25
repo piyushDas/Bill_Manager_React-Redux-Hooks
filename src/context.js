@@ -8,6 +8,7 @@ export const AppState = ({ children }) => {
   */
   const [flagToShowBills, setFlagToShowBills] = useState(false)
   const [threshold, setThreshold] = useState(50000)
+  const [nextId, setNextId] = useState('')
   const getDataPoints = (bills, month) => {
     console.log(month)
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -32,6 +33,18 @@ export const AppState = ({ children }) => {
     // console.log(billObj)
     return result
   }  
+
+  const initiateId = bills => {
+    let next = 1
+    if (bills.length) {
+      for (const bill of bills) {
+        if (bill.id > next) {
+          next = bill.id
+        }
+      }
+    }
+    setNextId(next)
+  }
 
   const getBillsForPayment = (bills, threshold) => {
     let result = []
@@ -81,7 +94,10 @@ export const AppState = ({ children }) => {
         getDataPoints,
         getBillsForPayment,
         threshold,
-        setThreshold
+        setThreshold,
+        nextId,
+        initiateId,
+        setNextId
       }}
     >
       {children}

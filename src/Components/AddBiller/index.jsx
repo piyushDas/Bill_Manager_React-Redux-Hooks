@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
-// import { Redirect } from 'react-router-dom'
-// import { AppContext } from '../../context'
+import React, { useState, useContext } from 'react'
+import { AppContext } from '../../context'
 import { useDispatch } from "react-redux"
 import './biller.css'
 
 const AddBiller = () => {
-  // const {
-  //   uploadComplete
-  // } = useContext(AppContext)
+  const {
+    nextId,
+    setNextId
+  } = useContext(AppContext)
 //   const bills = useSelector(state => state)
   const dispatch = useDispatch()
   const [description, setDescription] = useState('')
@@ -24,6 +24,7 @@ const AddBiller = () => {
       } else if (type === 'amount') {
         setAmount(val)
       }
+      setFormError(false)
   }
 
   const resetForm = () => {
@@ -34,14 +35,19 @@ const AddBiller = () => {
 
   const addBill = () => {
       if (description && category && amount && typeof parseInt(amount) === 'number') {
+        const dateObj = new Date()
+        const dateStr = `${(dateObj.getMonth() + 1) > 9 ? `0${(dateObj.getMonth() + 1)}` : (dateObj.getMonth() + 1)}-${dateObj.getDate() > 9 ? dateObj.getDate() : `0${dateObj.getDate()}`}-${dateObj.getFullYear()}`
         dispatch({
             type: "ADD_BILL",
             payload: {
                 description,
                 category,
-                amount: parseInt(amount)
+                amount: parseInt(amount),
+                date: dateStr,
+                id: nextId+1
             }
         })
+        setNextId(nextId+1)
         // resetForm()
       } else {
         setFormError(true)

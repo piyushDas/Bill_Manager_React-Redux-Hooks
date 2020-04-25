@@ -8,27 +8,33 @@ const BillList = () => {
   const {
     getBillsForPayment,
     flagToShowBills,
-    threshold
+    threshold,
+    initiateId
   } = useContext(AppContext)
-  const billers = useSelector(state => state)
+  let billers = useSelector(state => state)
   const [bills, setBills] = useState(billers)
   const dispatch = useDispatch()
 
   useEffect(() => {
+    initiateId(billers)
+  }, [])
+  useEffect(() => {
       if (flagToShowBills) {
-        setBills(getBillsForPayment(bills, threshold))
+        setBills(getBillsForPayment(billers, threshold))
       } else {
-        setBills(getBillsForPayment(bills, 0))
+        setBills(getBillsForPayment(billers, 0))
       }
   }, [billers, flagToShowBills, threshold])
 
-  let billList = "No bills available"
+  let billList = (
+      <div className="no-bills">No bills added. Please add your expenses for the month.</div>
+  )
 
-  const removeBill = description => () => {
+  const removeBill = id => () => {
     dispatch({
         type: "REMOVE_BILL",
         payload: {
-            description
+            id
           }
       })
   }
@@ -53,7 +59,7 @@ const BillList = () => {
                       {/* <div>
                           {bill.highlight ? "Yes" : "No"}
                       </div> */}
-                      <span onClick={removeBill(bill.description)}>X</span>
+                      <span onClick={removeBill(bill.id)}>X</span>
                   </div>
               ))
           }
