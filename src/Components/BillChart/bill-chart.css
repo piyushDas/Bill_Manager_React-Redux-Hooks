@@ -1,0 +1,23 @@
+.chart-box {
+    width: 90%;
+    margin: auto;
+    height: 300px;
+    padding: 20px 0;
+}
+
+.chart-filter {
+    display: flex;
+    justify-content: flex-end;
+    padding: 12px;
+    align-items: center;
+    color: #777;
+    font-size: 13px;
+}
+
+.bill-chart select{
+    height: 30px;
+    font-size: 13px;
+    width: 80%;
+    max-width: 300px;
+    margin-left: 12px;
+}

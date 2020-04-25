@@ -1,0 +1,97 @@
+.add-biller {
+    background: #fff;
+    margin: 24px auto;
+    /* padding: 12px; */
+    box-shadow: 0 0 4px #bbbbbb45;
+    border-radius: 8px;
+}
+
+.bill-header {
+    background: #5cc5a7;
+    color: #fff;
+    padding: 10px 10px 10px 24px;
+    border-bottom: 1px solid #36977b;
+    text-shadow: 0 -1px 0 #318a71;
+    font-size: 18px;
+}
+
+.add-biller-name {
+    width: 80%;
+    height: 40px;
+    margin: 15px auto;
+    padding: 0px 4px;
+    color: #999;
+    font-size: 16px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    margin-left: 20px;
+    margin-top: 26px;
+}
+
+.add-biller-name:focus + label {
+    top: 12px;
+    font-size: 12px;
+    color: #009688;
+    font-weight: 600;
+}
+
+.biller-label{
+    position: absolute;
+    top: 36px;
+    color: #999;
+    left: 24px;
+    transition: all 0.5s linear;
+}
+
+.biller-row-second {
+    padding-bottom: 16px;
+    padding-top: 8px;
+    display: flex;
+}
+
+.biller-row-second > div {
+    width: 30%;
+    position: relative;
+}
+
+.add-biller-category {
+    height: 30px;
+    font-size: 13px;
+    width: 80%;
+    margin: auto 10%;
+}
+
+.add-biller-amount {
+    height: 30px;
+    width: 80%;
+    /* height: 38px; */
+    margin: auto 20px;
+    padding: 0 4px;
+    color: #777;
+    font-size: 13px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+}
+
+.add-biller-amount + label {
+    position: absolute;
+    color: #777;
+    font-size: 14px;
+    top: 8px;
+    left: 20px;
+    transition: all 0.5s linear;
+}
+
+.error-msg {
+    padding: 0px 24px 18px;
+    color: #F44336;
+    font-size: 12px;
+}
+
+
+.add-biller-amount:focus + label {
+    top: -8px;
+    font-size: 12px;
+    color: #009688;
+    font-weight: 600;
+}
