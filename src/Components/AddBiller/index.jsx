@@ -48,7 +48,7 @@ const AddBiller = () => {
             }
         })
         setNextId(nextId+1)
-        // resetForm()
+        resetForm()
       } else {
         setFormError(true)
       }

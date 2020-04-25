@@ -1,5 +1,3 @@
-import React from 'react';	
- 
 const createBiller = ({description, category, amount}) => ({
     description,
     category,

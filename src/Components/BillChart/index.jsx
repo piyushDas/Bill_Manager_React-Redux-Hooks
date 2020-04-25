@@ -3,7 +3,6 @@ import { Chart } from 'react-charts'
 import { useSelector } from 'react-redux'
 import { AppContext } from '../../context'
 import './bill-chart.css'
-import { useEffect } from 'react'
 
 const BillChart = () => {
     const {
